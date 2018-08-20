@@ -5,6 +5,7 @@ import {
   InMemoryCache
 } from 'apollo-boost'
 import { onError } from '../../node_modules/apollo-link-error'
+import store from 'store'
 
 import { URI } from '../config/app'
 import { AUTH_TOKEN, TOKEN_KEY } from '../config/auth'
@@ -13,7 +14,7 @@ import { logout } from './auth'
 const httpLink = new HttpLink({ uri: URI })
 
 const middlewareAuthLink = new ApolloLink((operation, forward) => {
-  const authToken = localStorage.getItem(AUTH_TOKEN)
+  const authToken = store.get(AUTH_TOKEN)
   const authorizationHeader = authToken ? `${TOKEN_KEY} ${authToken}` : null
   operation.setContext({
     headers: {

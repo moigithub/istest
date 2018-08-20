@@ -10,7 +10,7 @@ export const isAuth = () => {
 }
 
 export const getUser = () => {
-  return JSON.parse(localStorage.getItem('user')) || {}
+  return JSON.parse(store.get('user')) || {}
 }
 
 export const logout = () => {
@@ -19,6 +19,7 @@ export const logout = () => {
 }
 
 export const login = (data) => {
+  console.log(data.key)
   store.set(AUTH_TOKEN, data.key)
   store.set('user', JSON.stringify(data.user))
 }
