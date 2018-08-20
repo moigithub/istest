@@ -170,9 +170,9 @@ class ListGroups extends Component {
               render: text => <a href="javascript:;">{text}</a>,
             }, {
               title: 'Action',
-              key: 'id',
+              key: 'actualizar',
               render: (text, record) => (
-                <span>
+
                     <Mutation
                       mutation={UPDATEGROUP}
                       refetchQueries={()=>{
@@ -201,7 +201,13 @@ class ListGroups extends Component {
                       )}
                       </Mutation>
 
+              ),
+            }
 
+              , {
+                title: 'Borrar',
+                key: 'borrar',
+                render: (text, record) => (
                      <Mutation
                        mutation={DELETEGROUP}
                        refetchQueries={()=>{
@@ -222,10 +228,10 @@ class ListGroups extends Component {
                           </Button>
                         )}
                       </Mutation>
+                ),
+              }
 
-                </span>
-              ),
-            }];
+            ];
 
             return (
               <Table columns={columns} dataSource={data.groups} rowKey="id"/>
