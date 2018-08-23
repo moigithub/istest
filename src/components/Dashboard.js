@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
 import AppLayout from './Layout'
-import ListGroups from './ListGroups'
+import ListUsers from './ListUsers'
 
 const Dashboard = () => (
   <AppLayout>
 
-    <ListGroups />
+    <ListUsers />
   </AppLayout>
 )
 
