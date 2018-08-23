@@ -7,16 +7,22 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import Protected from './Protected'
 
+import EditUser from './EditUser'
+import NewUser from './NewUser'
+
 const NotFound = () => (
   <AppLayout>
     <div className="not-found">404 Not Found</div>
   </AppLayout>
 )
 
+
 const ProtectedRoutes = (props) => (
   <Protected {...props}>
     <Switch>
       <Route path={`${props.match.url}/dashboard`} component={Dashboard} />
+      <Route path={`${props.match.url}/user/new`} component={NewUser} />
+      <Route path={`${props.match.url}/user/:id/edit`} component={EditUser} />
       <Route component={NotFound} />
     </Switch>
   </Protected>
