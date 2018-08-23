@@ -39,13 +39,14 @@
       background: #fff;
       padding: 24px;
       display: flex;
-      align-items: center;
+      //align-items: center;
       justify-content: center;
       min-height: 300px;
-
+/*
       > div {
         width: 100%;
       }
+*/
     }
   }
 }
@@ -73,4 +74,9 @@
 
 .login-form__button{
   width: 100%;
+}
+
+
+.ant-layout-sider-children {
+  height: auto;
 }
