@@ -1,7 +1,11 @@
 import store from 'store'
 import { AUTH_TOKEN } from '../config/auth'
 
+store.set('user', JSON.stringify({  id:"123", username:"hardcoded_user"})); /// test, por borrar
+
 export const getToken = () => {
+  return true;                /// test, por borrar
+
   return store.get(AUTH_TOKEN)
 }
 
