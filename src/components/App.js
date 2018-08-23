@@ -14,7 +14,7 @@ const NotFound = () => (
   <AppLayout>
     <div className="not-found">404 Not Found</div>
   </AppLayout>
-)
+);
 
 
 const ProtectedRoutes = (props) => (
@@ -26,7 +26,7 @@ const ProtectedRoutes = (props) => (
       <Route component={NotFound} />
     </Switch>
   </Protected>
-)
+);
 
 const App = () => (
   <Switch>
@@ -36,6 +36,6 @@ const App = () => (
     <Route path="/app/" component={ProtectedRoutes} />
     <Route component={NotFound} />
   </Switch>
-)
+);
 
 export default App

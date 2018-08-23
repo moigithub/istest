@@ -28,7 +28,7 @@ class NewUser extends Component {
     const {name, email, age} = e.target;
     doSave({variables: { name:name.value, email:email.value, age:+age.value}});
 
-  }
+  };
 
   onCompleted(data) {
     //console.log("nuevo completed", data, this.props)

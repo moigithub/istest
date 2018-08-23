@@ -8,6 +8,6 @@ const Dashboard = () => (
 
     <ListUsers />
   </AppLayout>
-)
+);
 
 export default Dashboard

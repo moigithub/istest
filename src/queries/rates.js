@@ -7,5 +7,5 @@ const ratesUSD = gql`
     rate
   }
 }
-`
+`;
 export default ratesUSD

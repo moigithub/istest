@@ -27,7 +27,7 @@ class ListGroups extends Component {
   handleAddGroup = (e, doAdd) => {
     e.preventDefault();
 
-    const {groupName} = e.target
+    const {groupName} = e.target;
 
     doAdd({
       variables:
@@ -42,7 +42,7 @@ class ListGroups extends Component {
 
         }
     })
-  }
+  };
 
   //agregar =
 
@@ -65,13 +65,13 @@ class ListGroups extends Component {
   handleUpdateGroup = (e, doUpdate, record) => {
     e.preventDefault();
 
-    const {groupName} = e.target
+    const {groupName} = e.target;
 
     doUpdate({
       variables:
         {"id": record.id, "name": groupName.value}
     })
-  }
+  };
 
 
   /*  update group mutation
@@ -95,10 +95,10 @@ class ListGroups extends Component {
   handleDeleteGroup = (e, doDelete, record) => {
     e.preventDefault();
 
-    console.log("delete record ", record)
+    console.log("delete record ", record);
     doDelete({variables: {"id": record.id}})
 
-  }
+  };
 
   onCompleted(data) {
     console.log("completed", data, this.props)
@@ -143,18 +143,18 @@ class ListGroups extends Component {
           query={groupsQuery}
         >
           {({loading, error, data}) => {
-            console.log("data groups ", data, error)
+            console.log("data groups ", data, error);
 
             const antIcon = <Icon type="loading" style={{fontSize: 24}} spin/>;
             if (loading) return (
               <div style={{textAlign: 'center'}}>
                 <Spin indicator={antIcon}/>
               </div>
-            )
+            );
 
             if (error) return (
               <Alert message="Error" type="error" showIcon/>
-            )
+            );
 
             //const rates = data.rates.map(({ currency, rate }) => <Option key={`${currency}: ${rate}`}>{`${currency}: ${rate}`}</Option>)
 
@@ -167,7 +167,7 @@ class ListGroups extends Component {
               title: 'Name',
               dataIndex: 'name',
               key: 'name',
-              render: text => <a href="javascript:;">{text}</a>,
+              render: text => <a href="javascript:">{text}</a>,
             }, {
               title: 'Action',
               key: 'actualizar',

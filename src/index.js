@@ -15,4 +15,4 @@ ReactDOM.render(
     </ApolloProvider>
   </BrowserRouter>,
   document.getElementById('root')
-)
+);

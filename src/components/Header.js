@@ -8,14 +8,14 @@ import { isAuth, getUser, logout } from '../utils/auth'
 class Header extends Component {
 
   logout() {
-    logout()
+    logout();
     this.props.history.push('/')
   }
 
   render() {
-    const { match, location } = this.props
+    const { match, location } = this.props;
 
-    console.log(match, location)
+    console.log(match, location);
 
     return (
       <Layout.Header>

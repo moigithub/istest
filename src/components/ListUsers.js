@@ -28,15 +28,15 @@ class ListUsers extends Component {
 /////////////
   //borrar =
   handleDeleteUser = (e, doDelete, data) => {
-    console.log("delete record ", data)
+    console.log("delete record ", data);
 
     doDelete({variables: {"id": data.id}})
 
-  }
+  };
 
 
   onCompleted(data) {
-    console.log("completed", data, this.props)
+    console.log("completed", data, this.props);
     notification.warn({
       message: 'Delete User',
       description: data.deletedUser.name+' deleted.',
@@ -69,11 +69,11 @@ class ListUsers extends Component {
               <div style={{textAlign: 'center'}}>
                 <Spin indicator={antIcon}/>
               </div>
-            )
+            );
 
             if (error) return (
               <Alert message="Error" type="error" showIcon/>
-            )
+            );
 
 
             return (

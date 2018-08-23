@@ -6,11 +6,11 @@ import AppLayout from './Layout'
 import { isAuth, login } from '../utils/auth'
 import { LOGIN } from '../mutations/auth'
 
-const FormItem = Form.Item
+const FormItem = Form.Item;
 
 class Login extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     if (isAuth()) {
       props.history.push('/')
@@ -20,7 +20,7 @@ class Login extends Component {
   handleSubmit = (e, doLogin) => {
     e.preventDefault();
 
-    const { username, password } = e.target
+    const { username, password } = e.target;
 
     doLogin({
       variables: {
@@ -28,10 +28,10 @@ class Login extends Component {
         password: password.value,
       }
     })
-  }
+  };
 
   onCompleted(data) {
-    login(data.login)
+    login(data.login);
     this.props.history.push('/')
   }
 

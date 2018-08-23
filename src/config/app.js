@@ -2,4 +2,4 @@
 
 export const SERVER = "https://eu1.prisma.sh/sergio-melendez-f22980/database/dev";
 //export const URI = `${SERVER}/graphql/`
-export const URI = `${SERVER}/`
+export const URI = `${SERVER}/`;

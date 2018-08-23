@@ -12,6 +12,6 @@ const AppLayout = ({ children }) => (
     </Layout.Content>
     <Footer />
   </Layout>
-)
+);
 
 export default AppLayout

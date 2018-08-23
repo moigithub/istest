@@ -9,7 +9,7 @@ query groups {
     name
   }
 }
-`
+`;
 export default groupsQuery
 
 

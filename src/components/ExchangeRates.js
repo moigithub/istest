@@ -4,7 +4,7 @@ import { Select, Spin, Icon, Alert } from 'antd'
 
 import ratesUSD from '../queries/rates'
 
-const Option = Select.Option
+const Option = Select.Option;
 
 class ExchangeRates extends Component {
   render(){
@@ -19,13 +19,13 @@ class ExchangeRates extends Component {
             <div style={{ textAlign: 'center' }}>
               <Spin indicator={antIcon}/>
             </div>
-          )
+          );
 
           if (error) return (
             <Alert message="Error" type="error" showIcon />
-          )
+          );
 
-          const rates = data.rates.map(({ currency, rate }) => <Option key={`${currency}: ${rate}`}>{`${currency}: ${rate}`}</Option>)
+          const rates = data.rates.map(({ currency, rate }) => <Option key={`${currency}: ${rate}`}>{`${currency}: ${rate}`}</Option>);
 
           //Function onChange option
           function handleChange(value) {

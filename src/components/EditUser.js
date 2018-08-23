@@ -12,28 +12,22 @@ const FormItem = Form.Item;
 
 import AppLayout from './Layout'
 
-
 import { SEARCHUSER} from '../queries/users'
 import { UPDATEUSER } from '../mutations/users'
-
 
 
 class EditUser extends Component {
 
   handleSubmit = (e, doSave) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const {id} = this.props.match.params;
-    console.log("update record ", e.target)
-
     const {name, email, age} = e.target;
-    //mutation updateUser($id: ID!, $name: String, $email: String, $age: Int) {
-    doSave({variables: {id, name:name.value, email:email.value, age:+age.value}})
 
-  }
+    doSave({variables: {id, name:name.value, email:email.value, age:+age.value}})
+  };
 
   onCompleted(data) {
-    console.log("completed", data)
     notification.open({
       message: 'Edit User',
       description: data.updateUser.name+' saved.',
@@ -48,25 +42,24 @@ class EditUser extends Component {
 
   render() {
     const {id} = this.props.match.params;
-    console.log("edit user props",id)
+
     return (
         <Query
           query={SEARCHUSER}
           variables={{id}}
         >
           {({loading, error, data:querydata}) => {
-            console.log("data groups ", querydata, error)
 
             const antIcon = <Icon type="loading" style={{fontSize: 24}} spin/>;
             if (loading) return (
               <div style={{textAlign: 'center'}}>
                 <Spin indicator={antIcon}/>
               </div>
-            )
+            );
 
             if (error) return (
               <Alert message="Error" type="error" showIcon/>
-            )
+            );
 
 
             return (

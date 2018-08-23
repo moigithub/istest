@@ -9,6 +9,6 @@ const Home = (props) => null /*console.log(props)*/ || (
       home
     </div>
   </AppLayout>
-)
+);
 
 export default Home

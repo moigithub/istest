@@ -40,4 +40,4 @@ module.exports = {
     inline: true,
     port: 4000
   }
-}
+};
