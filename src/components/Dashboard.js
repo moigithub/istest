@@ -5,7 +5,6 @@ import ListUsers from './ListUsers'
 
 const Dashboard = () => (
   <AppLayout>
-
     <ListUsers />
   </AppLayout>
 );

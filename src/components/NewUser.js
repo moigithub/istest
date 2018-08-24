@@ -23,15 +23,12 @@ class NewUser extends Component {
     e.preventDefault();
 
     const {id} = this.props.match.params;
-//    console.log("nuevo record ", e.target)
-
     const {name, email, age} = e.target;
-    doSave({variables: { name:name.value, email:email.value, age:+age.value}});
 
+    doSave({variables: { name:name.value, email:email.value, age:+age.value}});
   };
 
   onCompleted(data) {
-    //console.log("nuevo completed", data, this.props)
     notification.open({
       message: 'New User',
       description: data.createUser.name+' created.',

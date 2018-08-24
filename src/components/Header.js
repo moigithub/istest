@@ -15,8 +15,6 @@ class Header extends Component {
   render() {
     const { match, location } = this.props;
 
-    console.log(match, location);
-
     return (
       <Layout.Header>
         <div className="logo">

@@ -23,7 +23,6 @@ import {ADDGROUP, DELETEGROUP, UPDATEGROUP} from '../mutations/groups'
 class ListGroups extends Component {
 
 
-/////////////
   handleAddGroup = (e, doAdd) => {
     e.preventDefault();
 
@@ -33,34 +32,9 @@ class ListGroups extends Component {
       variables:
         {
           "name": groupName.value
-          /*          ,
-                    "permissions":
-                      {"create": {"name": "asd","codename": "asd" }
-                        ,"connect": { "id": "asdfa"        }
-                      }
-          */
-
         }
     })
   };
-
-  //agregar =
-
-  /* create group mutation
-   {"data": {"name": "asd",
-    "permissions":
-    {"create": {"name": "asd","codename": "asd" }
-    ,"connect": { "id": "asdfa"
-    }}
-
-
-     }}
-  * */
-
-
-/////////////
-  //actualizar =
-  //////
 
   handleUpdateGroup = (e, doUpdate, record) => {
     e.preventDefault();
@@ -73,36 +47,13 @@ class ListGroups extends Component {
     })
   };
 
-
-  /*  update group mutation
-  *
-  * {"data": {
-    "name": "test",
-    "permissions":
-    { "create":
-      { "name": "aaa",
-      "codename": "bb"},
-      "connect": {"id": 123}
-      }
-  }
-  }
-  *
-  * */
-
-
-/////////////
-  //borrar =
   handleDeleteGroup = (e, doDelete, record) => {
     e.preventDefault();
 
-    console.log("delete record ", record);
     doDelete({variables: {"id": record.id}})
-
   };
 
   onCompleted(data) {
-    console.log("completed", data, this.props)
-   // this.props.history.push('/app/dashboard')
   }
 
   onError(error) {
@@ -115,9 +66,9 @@ class ListGroups extends Component {
 
         <Mutation
           mutation={ADDGROUP}
-          refetchQueries={()=>{
+          refetchQueries={() => {
             return [{
-              query : groupsQuery
+              query: groupsQuery
             }]
           }}
           onCompleted={(data) => this.onCompleted(data)}
@@ -143,8 +94,6 @@ class ListGroups extends Component {
           query={groupsQuery}
         >
           {({loading, error, data}) => {
-            console.log("data groups ", data, error);
-
             const antIcon = <Icon type="loading" style={{fontSize: 24}} spin/>;
             if (loading) return (
               <div style={{textAlign: 'center'}}>
@@ -156,13 +105,6 @@ class ListGroups extends Component {
               <Alert message="Error" type="error" showIcon/>
             );
 
-            //const rates = data.rates.map(({ currency, rate }) => <Option key={`${currency}: ${rate}`}>{`${currency}: ${rate}`}</Option>)
-
-            //Function onChange option
-            // function handleChange(value) {
-            //   console.log(`Selected: ${value}`)
-            // }
-
             const columns = [{
               title: 'Name',
               dataIndex: 'name',
@@ -173,33 +115,33 @@ class ListGroups extends Component {
               key: 'actualizar',
               render: (text, record) => (
 
-                    <Mutation
-                      mutation={UPDATEGROUP}
-                      refetchQueries={()=>{
-                        return [{
-                          query : groupsQuery
-                        }]
-                      }}
-                      onCompleted={(data) => this.onCompleted(data)}
-                      onError={(error) => this.onError(error)}
-                    >
-                      {(doUpdate, {loading, error}) => (
-                        <Form layout="inline" onSubmit={(e) => this.handleUpdateGroup(e, doUpdate, record)}>
-                          <h2>New name</h2>
-                          <FormItem>
-                            <Input size="large" name="groupName"
-                                   prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                   placeholder="Group Name"/>
-                          </FormItem>
-                          <FormItem>
-                            <Button size="large" type="primary" htmlType="submit" className="login-form__button"
-                                    disabled={loading}>
-                              Actualizar
-                            </Button>
-                          </FormItem>
-                        </Form>
-                      )}
-                      </Mutation>
+                <Mutation
+                  mutation={UPDATEGROUP}
+                  refetchQueries={() => {
+                    return [{
+                      query: groupsQuery
+                    }]
+                  }}
+                  onCompleted={(data) => this.onCompleted(data)}
+                  onError={(error) => this.onError(error)}
+                >
+                  {(doUpdate, {loading, error}) => (
+                    <Form layout="inline" onSubmit={(e) => this.handleUpdateGroup(e, doUpdate, record)}>
+                      <h2>New name</h2>
+                      <FormItem>
+                        <Input size="large" name="groupName"
+                               prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                               placeholder="Group Name"/>
+                      </FormItem>
+                      <FormItem>
+                        <Button size="large" type="primary" htmlType="submit" className="login-form__button"
+                                disabled={loading}>
+                          Actualizar
+                        </Button>
+                      </FormItem>
+                    </Form>
+                  )}
+                </Mutation>
 
               ),
             }
@@ -208,26 +150,26 @@ class ListGroups extends Component {
                 title: 'Borrar',
                 key: 'borrar',
                 render: (text, record) => (
-                     <Mutation
-                       mutation={DELETEGROUP}
-                       refetchQueries={()=>{
-                         return [{
-                           query : groupsQuery
-                         }]
-                       }}
-                       onCompleted={(record) => this.onCompleted(record)}
-                       onError={(error) => this.onError(error)}
-                     >
-                        {(doDelete, {loading, error}) => (
-                          <Button type="danger"
-                                  block={"false"}
-                                  disabled={loading}
-                                  onClick={(e) => this.handleDeleteGroup(e, doDelete, record)}
-                          >
-                            Borrar
-                          </Button>
-                        )}
-                      </Mutation>
+                  <Mutation
+                    mutation={DELETEGROUP}
+                    refetchQueries={() => {
+                      return [{
+                        query: groupsQuery
+                      }]
+                    }}
+                    onCompleted={(record) => this.onCompleted(record)}
+                    onError={(error) => this.onError(error)}
+                  >
+                    {(doDelete, {loading, error}) => (
+                      <Button type="danger"
+                              block={"false"}
+                              disabled={loading}
+                              onClick={(e) => this.handleDeleteGroup(e, doDelete, record)}
+                      >
+                        Borrar
+                      </Button>
+                    )}
+                  </Mutation>
                 ),
               }
 

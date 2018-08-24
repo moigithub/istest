@@ -17,7 +17,6 @@ const FormItem = Form.Item;
 const {  Content, Sider } = Layout;
 
 
-
 import {ALLUSERS,} from '../queries/users'
 import { DELETEUSER} from '../mutations/users'
 
@@ -25,24 +24,16 @@ import { DELETEUSER} from '../mutations/users'
 
 class ListUsers extends Component {
 
-/////////////
-  //borrar =
   handleDeleteUser = (e, doDelete, data) => {
-    console.log("delete record ", data);
-
     doDelete({variables: {"id": data.id}})
-
   };
 
-
   onCompleted(data) {
-    console.log("completed", data, this.props);
     notification.warn({
       message: 'Delete User',
-      description: data.deletedUser.name+' deleted.',
+      description: data.deleteUser.name+' deleted.',
       icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
     });
-    // this.props.history.push('/app/dashboard')
   }
 
   onError(error) {
@@ -94,7 +85,7 @@ class ListUsers extends Component {
                         query : ALLUSERS
                       }]
                     }}
-                    onCompleted={(record) => this.onCompleted(record)}
+                    onCompleted={(data) => this.onCompleted(data)}
                     onError={(error) => this.onError(error)}
                   >
                     {(doDelete, {loading, error, data}) => (
@@ -119,71 +110,3 @@ class ListUsers extends Component {
 }
 
 export default withRouter(ListUsers)
-
-
-/*
-
-        <Mutation
-          mutation={ADDGROUP}
-          refetchQueries={()=>{
-            return [{
-              query : groupsQuery
-            }]
-          }}
-          onCompleted={(data) => this.onCompleted(data)}
-          onError={(error) => this.onError(error)}
-        >
-          {(doAdd, {loading, error, data}) => (
-            <Form onSubmit={(e) => this.handleAddGroup(e, doAdd)}>
-              <h3>Create new group</h3>
-              <FormItem>
-                <Input size="large" name="groupName" prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                       placeholder="Group Name"/>
-              </FormItem>
-              <FormItem>
-                <Button size="large" type="primary" htmlType="submit" className="login-form__button" disabled={loading}>
-                  Crear
-                </Button>
-              </FormItem>
-            </Form>
-          )}
-        </Mutation>
-
-
-////////////
-/// tabla
-
-              title: 'Action',
-              key: 'actualizar',
-              render: (text, record) => (
-
-                <Mutation
-                  mutation={UPDATEGROUP}
-                  refetchQueries={()=>{
-                    return [{
-                      query : groupsQuery
-                    }]
-                  }}
-                  onCompleted={(data) => this.onCompleted(data)}
-                  onError={(error) => this.onError(error)}
-                >
-                  {(doUpdate, {loading, error}) => (
-                    <Form layout="inline" onSubmit={(e) => this.handleUpdateGroup(e, doUpdate, record)}>
-                      <h2>New name</h2>
-                      <FormItem>
-                        <Input size="large" name="groupName"
-                               prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                               placeholder="Group Name"/>
-                      </FormItem>
-                      <FormItem>
-                        <Button size="large" type="primary" htmlType="submit" className="login-form__button"
-                                disabled={loading}>
-                          Actualizar
-                        </Button>
-                      </FormItem>
-                    </Form>
-                  )}
-                </Mutation>
-
-              ),
-* */
